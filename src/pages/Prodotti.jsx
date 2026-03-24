@@ -32,7 +32,7 @@ function Prodotti() {
     <main className="min-vh-100 py-5">
       <div className="container">
         <div className="d-flex justify-content-end">
-          <button className="btn btn-outline-secondary" onClick={() => setBudgetMode(!budgetMode)}><i className="bi bi-funnel"> Modalità Budget</i></button>
+          <button className={`btn btn${budgetMode === false ? '-outline' : ''}-secondary`} onClick={() => setBudgetMode(!budgetMode)}><i className="bi bi-funnel-fill"> Modalità Budget {budgetMode === false ? 'Attiva' : 'Disattiva'}</i></button>
         </div>
         <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ">
           {
