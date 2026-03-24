@@ -14,7 +14,6 @@ function Prodotto() {
             .then(response => response.json()
                 .then(data => {
                     setCurrentProduct(data)
-                    console.log(data)
                     setCurrentRating((data.rating.rate * 100) / 5)
                 })
             )
