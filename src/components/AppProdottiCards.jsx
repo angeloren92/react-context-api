@@ -4,7 +4,7 @@ function AppProdottiCards({ element }) {
 
 return (
     <div className="col g-4">
-        <Link to={`/prodotti/${element.id}`} className="card bg-secondary-subtle h-100 main-card shadow">
+        <Link to={`/prodotti/${element.id}`} className="card bg-secondary-subtle h-100 main-card shadow text-decoration-none">
             <figure className="card-body d-flex flex-column justify-content-between align-items-center">
                 <div className="position-relative">
                     <img src={element.image} alt={element.title} className="img-fluid border bg-light rounded-3 p-5" />
