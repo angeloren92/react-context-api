@@ -10,7 +10,7 @@ import { useState, useContext } from 'react'
 function App() {
 
   const [budgetMode, setBudgetMode] = useState(false)
-  const [budgetFilter, setBudgetFilter] = useState(0)
+  const [budgetFilter, setBudgetFilter] = useState('')
 
   return (
     <BudgetContext.Provider value={{budgetMode, setBudgetMode, budgetFilter, setBudgetFilter}}>

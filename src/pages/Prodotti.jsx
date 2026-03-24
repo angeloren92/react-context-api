@@ -29,15 +29,26 @@ function Prodotti() {
     }
   }, [budgetMode])
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    if (budgetFilter !== '') {
+      setFilteredProducts([...products.filter(element => element.price <= parseInt(budgetFilter))])
+    } else {
+      setFilteredProducts(products)
+    }
+  }
+
+  console.log(budgetFilter)
+
   return (
     <main className="min-vh-100 py-5">
       <div className="container">
         <div className="d-flex justify-content-end gap-3">
-          <form className="d-flex " action="">
-            <input type="number" id="budgetFilter" className="btn btn-outline-secondary shadow-none bg-light text-black"/>
+          <form className="d-flex " onSubmit={handleSubmit}>
+            <input type="number" placeholder="Inserisci Budget Max" id="budgetFilter" className="btn btn-outline-secondary shadow-none bg-light text-black" value={budgetFilter} onChange={(e) => setBudgetFilter(e.target.value)} />
             <button className="btn btn-secondary rounded-0">VAI</button>
           </form>
-          <button className={`btn btn${budgetMode === false ? '-outline' : ''}-secondary`} onClick={() => setBudgetMode(!budgetMode)}><i className="bi bi-funnel-fill"> Modalità Budget {budgetMode === false ? 'Attiva' : 'Disattiva'}</i></button>
+          <button type="submit" className={`btn btn${budgetMode === false ? '-outline' : ''}-secondary`} onClick={() => setBudgetMode(!budgetMode)} disabled={budgetFilter !== ''}><i className="bi bi-funnel-fill"> Modalità Budget {budgetMode === false ? 'Attiva' : 'Disattiva'}</i></button>
         </div>
         <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ">
           {
