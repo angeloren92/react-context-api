@@ -15,26 +15,28 @@ function Prodotti() {
       .then(response => response.json())
       .then(data => {
         setProducts(data)
+        setFilteredProducts(data)
       })
   }, [])
 
-function handleBudgetMode() {
-  setBudgetMode(true)
+  useEffect(() => {
   if (budgetMode === true) {
-    const tempFilter = productse.filter(element => element.price)
-    setFilteredProducts()
+    const tempFilter = products.filter(element => element.price <= 30)
+    setFilteredProducts(tempFilter)
+  } else {
+    setFilteredProducts(products)
   }
-}
+  }, [budgetMode])
 
   return (
     <main className="min-vh-100 py-5">
       <div className="container">
         <div className="d-flex justify-content-end">
-          <button className="btn btn-outline-secondary" onClick={handleBudgetMode}><i className="bi bi-funnel"> Modalità Budget</i></button>
+          <button className="btn btn-outline-secondary" onClick={() => setBudgetMode(!budgetMode)}><i className="bi bi-funnel"> Modalità Budget</i></button>
         </div>
         <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ">
           {
-            products.map(element => (
+            filteredProducts.map(element => (
               <AppProdottiCards key={element.id}
                 element={element}
               />
