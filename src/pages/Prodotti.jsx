@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import AppProdottiCards from '../components/AppProdottiCards'
-import AppProdottoCard from "./Prodotto"
+import BudgetContext from "../contexts/BudgetContext"
 
 const apiUrl = 'https://fakestoreapi.com'
 
 
 function Prodotti() {
   const [products, setProducts] = useState([])
-  const [currentProduct, setCurrentProduct] = useState({ id: 0 })
-
-  function handleProduct(element) {
-    setCurrentProduct(element)
-  }
+  const { budgetMode, setBudgetMode } = useContext(BudgetContext)
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   useEffect(() => {
     fetch(`${apiUrl}/products`)
@@ -21,22 +18,29 @@ function Prodotti() {
       })
   }, [])
 
+function handleBudgetMode() {
+  setBudgetMode(true)
+  if (budgetMode === true) {
+    const tempFilter = productse.filter(element => element.price)
+    setFilteredProducts()
+  }
+}
+
   return (
-    <main className="min-vh-100">
+    <main className="min-vh-100 py-5">
       <div className="container">
-        {
-          currentProduct.id === 0 && (
-            <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 py-5">
-              {
-                products.map(element => (
-                  <AppProdottiCards key={element.id}
-                    element={element}
-                  />
-                ))
-              }
-            </section>
-          )
-        }
+        <div className="d-flex justify-content-end">
+          <button className="btn btn-outline-secondary" onClick={handleBudgetMode}><i className="bi bi-funnel"> Modalità Budget</i></button>
+        </div>
+        <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ">
+          {
+            products.map(element => (
+              <AppProdottiCards key={element.id}
+                element={element}
+              />
+            ))
+          }
+        </section>
       </div >
     </main >
   )
