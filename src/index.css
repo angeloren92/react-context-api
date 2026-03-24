@@ -3,13 +3,13 @@
 
 /* navbar */
 .navbar {
-    
+
     border-radius: 0 0 0 1.5rem;
-    
+
     .nav-link {
         font-size: 1.5rem;
     }
-    
+
 }
 
 img[alt~="Logo"] {
@@ -37,6 +37,12 @@ img[alt~="Logo"] {
     right: 1rem;
     top: 1rem;
 }
+
+#budgetFilter {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+
 
 /* main cards */
 

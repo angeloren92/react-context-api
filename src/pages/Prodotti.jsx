@@ -9,6 +9,7 @@ function Prodotti() {
   const [products, setProducts] = useState([])
   const { budgetMode, setBudgetMode } = useContext(BudgetContext)
   const [filteredProducts, setFilteredProducts] = useState([])
+  const { budgetFilter, setBudgetFilter } = useContext(BudgetContext)
 
   useEffect(() => {
     fetch(`${apiUrl}/products`)
@@ -20,18 +21,22 @@ function Prodotti() {
   }, [])
 
   useEffect(() => {
-  if (budgetMode === true) {
-    const tempFilter = products.filter(element => element.price <= 30)
-    setFilteredProducts(tempFilter)
-  } else {
-    setFilteredProducts(products)
-  }
+    if (budgetMode === true) {
+      const tempFilter = products.filter(element => element.price <= 30)
+      setFilteredProducts(tempFilter)
+    } else {
+      setFilteredProducts(products)
+    }
   }, [budgetMode])
 
   return (
     <main className="min-vh-100 py-5">
       <div className="container">
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end gap-3">
+          <form className="d-flex " action="">
+            <input type="number" id="budgetFilter" className="btn btn-outline-secondary shadow-none bg-light text-black"/>
+            <button className="btn btn-secondary rounded-0">VAI</button>
+          </form>
           <button className={`btn btn${budgetMode === false ? '-outline' : ''}-secondary`} onClick={() => setBudgetMode(!budgetMode)}><i className="bi bi-funnel-fill"> Modalità Budget {budgetMode === false ? 'Attiva' : 'Disattiva'}</i></button>
         </div>
         <section className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ">

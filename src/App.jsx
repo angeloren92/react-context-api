@@ -10,16 +10,17 @@ import { useState, useContext } from 'react'
 function App() {
 
   const [budgetMode, setBudgetMode] = useState(false)
+  const [budgetFilter, setBudgetFilter] = useState(0)
 
   return (
-    <BudgetContext.Provider value={{budgetMode, setBudgetMode}}>
+    <BudgetContext.Provider value={{budgetMode, setBudgetMode, budgetFilter, setBudgetFilter}}>
       <BrowserRouter>
         <Routes>
           <Route element={<LayoutDefault />}>
             <Route index element={<HomePage />} />
-            <Route path='/Prodotti' element={<Prodotti />} />
-            <Route path='/ChiSiamo' element={<ChiSiamo />} />
-            <Route path='/Prodotti/:id' element={<Prodotto />} />
+            <Route path='/prodotti' element={<Prodotti />} />
+            <Route path='/chi_siamo' element={<ChiSiamo />} />
+            <Route path='/prodotti/:id' element={<Prodotto />} />
           </Route>
         </Routes>
       </BrowserRouter>

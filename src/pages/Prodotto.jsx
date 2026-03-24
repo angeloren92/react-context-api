@@ -39,8 +39,15 @@ function Prodotto() {
                     <div className="col g-4 h-100">
                         <div className="card bg-secondary-subtle position-relative shadow">
                             <Link to='/Prodotti' className="btn back btn-outline-dark position-absolute rounded-4">INDIETRO</Link>
-                            <button className="btn btn-outline-light bg-transparent position-absolute next z-1 border-0" onClick={() => navigate(`/Prodotti/${parseInt(id) + 1}`)} disabled={id == maxPages}><i className="bi bi-caret-right-fill"></i></button>
-                            <button className="btn btn-outline-light bg-transparent position-absolute prev z-1 border-0" onClick={() => navigate(`/Prodotti/${parseInt(id) - 1}`)} disabled={id == 1}><i className="bi bi-caret-left-fill"></i></button>
+                            <button className="btn btn-outline-light bg-transparent position-absolute next z-1 border-0"
+                                onClick={() => navigate(`/Prodotti/${parseInt(id) + 1}`)}
+                                disabled={id == maxPages}><i className="bi bi-caret-right-fill"></i>
+                            </button>
+                            <button className="btn btn-outline-light bg-transparent position-absolute prev z-1 border-0"
+                                onClick={() => navigate(`/Prodotti/${parseInt(id) - 1}`)}
+                                disabled={id == 1}>
+                                <i className="bi bi-caret-left-fill"></i>
+                            </button>
                             <figure className="card-body mb-0 d-flex flex-wrap align-items-center flex-lg-nowrap bg-light h-100">
                                 <div className="productCardImg d-flex justify-content-center mx-auto py-3">
                                     <img src={currentProduct.image} alt={currentProduct.title} className="img-fluid bg-light rounded-3 px-5" />
