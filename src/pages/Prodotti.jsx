@@ -1,15 +1,14 @@
 import { useEffect, useState, useContext } from "react"
 import AppProdottiCards from '../components/AppProdottiCards'
-import BudgetContext from "../contexts/BudgetContext"
+import { BudgetContext } from "../contexts/BudgetContext"
 
 const apiUrl = 'https://fakestoreapi.com'
 
 
 function Prodotti() {
   const [products, setProducts] = useState([])
-  const { budgetMode, setBudgetMode } = useContext(BudgetContext)
   const [filteredProducts, setFilteredProducts] = useState([])
-  const { budgetFilter, setBudgetFilter } = useContext(BudgetContext)
+  const { budgetMode, setBudgetMode, budgetFilter, setBudgetFilter } = useContext(BudgetContext)
 
   useEffect(() => {
     fetch(`${apiUrl}/products`)
@@ -37,8 +36,6 @@ function Prodotti() {
       setFilteredProducts(products)
     }
   }
-
-  console.log(budgetFilter)
 
   return (
     <main className="min-vh-100 py-5">

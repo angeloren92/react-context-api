@@ -4,16 +4,12 @@ import ChiSiamo from './pages/ChiSiamo'
 import Prodotti from './pages/Prodotti'
 import Prodotto from './pages/Prodotto'
 import LayoutDefault from './layout/DefaultLayout'
-import BudgetContext from './contexts/BudgetContext'
-import { useState, useContext } from 'react'
+import { BudgetProvider } from './contexts/BudgetContext'
 
 function App() {
 
-  const [budgetMode, setBudgetMode] = useState(false)
-  const [budgetFilter, setBudgetFilter] = useState('')
-
   return (
-    <BudgetContext.Provider value={{budgetMode, setBudgetMode, budgetFilter, setBudgetFilter}}>
+    <BudgetProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<LayoutDefault />}>
@@ -24,7 +20,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </BudgetContext.Provider>
+    </BudgetProvider>
   )
 }
 

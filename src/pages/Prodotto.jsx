@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { BudgetContext } from "../contexts/BudgetContext"
 
 const apiUrl = 'https://fakestoreapi.com/products'
 
@@ -38,20 +39,26 @@ function Prodotto() {
                 <div className="row singleProductSection">
                     <div className="col g-4 h-100">
                         <div className="card bg-secondary-subtle position-relative shadow">
+
                             <Link to='/Prodotti' className="btn back btn-outline-dark position-absolute rounded-4">INDIETRO</Link>
+
                             <button className="btn btn-outline-light bg-transparent position-absolute next z-1 border-0"
                                 onClick={() => navigate(`/Prodotti/${parseInt(id) + 1}`)}
                                 disabled={id == maxPages}><i className="bi bi-caret-right-fill"></i>
                             </button>
+
                             <button className="btn btn-outline-light bg-transparent position-absolute prev z-1 border-0"
                                 onClick={() => navigate(`/Prodotti/${parseInt(id) - 1}`)}
                                 disabled={id == 1}>
                                 <i className="bi bi-caret-left-fill"></i>
                             </button>
+
                             <figure className="card-body mb-0 d-flex flex-wrap align-items-center flex-lg-nowrap bg-light h-100">
+
                                 <div className="productCardImg d-flex justify-content-center mx-auto py-3">
                                     <img src={currentProduct.image} alt={currentProduct.title} className="img-fluid bg-light rounded-3 px-5" />
                                 </div>
+
                                 <div className="d-flex flex-column p-3 p-lg-5 productCardInfo">
                                     <h2 className="h5 text-start">{currentProduct.title}</h2>
                                     <small className="mb-4">{currentProduct.category.toUpperCase()}</small>
@@ -75,6 +82,7 @@ function Prodotto() {
                                     </div>
                                 </div>
                             </figure>
+                            
                             <figure className="card-footer">
                                 <h3>Prodotti suggeriti:</h3>
 
