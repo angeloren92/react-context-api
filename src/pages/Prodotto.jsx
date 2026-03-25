@@ -27,6 +27,9 @@ function Prodotto() {
                 setCurrentProduct(data)
                 setCurrentRating((data.rating.rate * 100) / 5)
             })
+            .catch(err => {
+                navigate('/prodotti')
+            })
     }, [id])
 
 
@@ -43,12 +46,12 @@ function Prodotto() {
                             <Link to='/Prodotti' className="btn back btn-outline-dark position-absolute rounded-4">INDIETRO</Link>
 
                             <button className="btn btn-outline-light bg-transparent position-absolute next z-1 border-0"
-                                onClick={() => navigate(`/Prodotti/${parseInt(id) + 1}`)}
+                                onClick={() => navigate(`/prodotti/${parseInt(id) + 1}`)}
                                 disabled={id == maxPages}><i className="bi bi-caret-right-fill"></i>
                             </button>
 
                             <button className="btn btn-outline-light bg-transparent position-absolute prev z-1 border-0"
-                                onClick={() => navigate(`/Prodotti/${parseInt(id) - 1}`)}
+                                onClick={() => navigate(`/prodotti/${parseInt(id) - 1}`)}
                                 disabled={id == 1}>
                                 <i className="bi bi-caret-left-fill"></i>
                             </button>
